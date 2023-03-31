@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product,Subscribers
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def landing_page(request):
@@ -44,8 +45,14 @@ def contact_page(request):
 
 def product_description_page(request,pk):
     product = Product.objects.get(pk=pk)
-    print(product)
     context = {
         "product":product
     }
-    return render(request,'home/description.html')
+    return render(request,'home/description.html',context)
+
+@login_required
+def checkout_page(request):
+    return render(request,'home/checkout.html')
+
+def order_placed_page(request):
+    return render(request,'home/orderplaced.html')
