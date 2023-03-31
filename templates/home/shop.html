@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/shops.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+<strong><h2 id="shoph2">shop</h2></strong>
+<div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('nature')"> Fruit </button>
+    <button class="btn" onclick="filterSelection('cars')"> Vegetables</button>
+    <button class="btn" onclick="filterSelection('people')"> Crops</button>
+    <button class="btn" onclick="filterSelection('sales')"> Sales </button>
+</div>
+
+<!-- Portfolio Gallery Grid -->
+{% for obj in fruits %}
+<div class="row">
+    <div class="column nature">
+        <div class="content">
+            <img src="{{obj.image.url}}" alt="{{obj.name}}" style="width:100%; height:100%;">
+            <h3>{{obj.name}}</h3>
+            <p class="price">₹{{obj.price}}</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+    </div>
+{% endfor %}
+
+{% for obj in vegetables %}
+    <div class="column cars">
+        <div class="content">
+            <img src="{{obj.image.url}}" alt="{{obj.name}}" style="width:100%">
+            <h4>{{obj.name}}</h4>
+            <p class="price">₹{{obj.price}}</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+    </div>
+{% endfor %}
+
+{% for obj in crops %}
+    <div class="column people">
+        <div class="content">
+            <img src="{{obj.image.url}}" alt="{{obj.name}}" style="width:100%">
+            <h4>{{obj.name}}</h4>
+            <p class="price">₹{{obj.price}}</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+    </div>
+{% endfor %}
+
+
+    <!-- END GRID -->
+</div>
+{% endblock content %}
+
+{% block additional_js %}
+<script src="{% static 'js/shop.js' %}"></script>
+{% endblock additional_js %}

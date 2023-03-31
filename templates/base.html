@@ -1,15 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hello
-    {% block content%}
 
-    {% endblock content%}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Connect</title>
+  {% block additional_css %}
+
+  {% endblock additional_css %}
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="/"><img src="{% static 'images/icon.png'%}" alt="" width="250" height="120"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="{% url 'shop' %}">Shop</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li><a href=""  style="color: rgb(3, 184, 184);">Hi <span>{{request.user}}</span></a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {%endif%}
+      </ul>
+    </nav>
+    <div class="cart">
+      <a href="{% url 'cart' %}">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge">0</span>
+      </a>
+    </div>
+  </header>
+  {% block content%}
+
+  {% endblock content%}
+  <footer>
+    <div class="newsletter">
+      <h2>Subscribe to our newsletter</h2>
+      <p>Get the latest news and updates from our store.</p>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer">
+      <p>&copy; 2023 FarmConnect. All rights reserved.</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Shipping Information</a></li>
+      </ul>
+    </div>
+  </footer>
+  {% block additional_js %}
+
+  {% endblock additional_js %}
+
 </body>
+
 </html>
