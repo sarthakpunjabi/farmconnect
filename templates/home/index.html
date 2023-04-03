@@ -24,9 +24,10 @@
         <img src="{{obj.image.url}}" alt="Product 1" class="crops">
         <h3>{{obj.name}}</h3>
         <p class="price">₹{{obj.price}}</p>
-        <a href="#" class="btn">Add to Cart</a>
+      </a>
+        <button class="btn add-to-cart update-cart" data-product="{{ obj.pk }}" data-action="add" data-id="{{ obj.pk }}">Add to Cart</button>
       </div>
-    </a>
+    
       {% endfor %}
     </div>
   </section>
@@ -42,7 +43,7 @@
             <img src="{{obj.image.url}}" alt="Product 4" class="crops">
             <h3>{{obj.name}}</h3>
             <p class="price">₹{{obj.price}}</p>
-            <a href="#" class="btn">Add to Cart</a>
+            <button class="btn add-to-cart update-cart" data-product="{{ obj.pk }}" data-action="add" data-id="{{ obj.pk }}">Add to Cart</button>
           </a>
           </div>
           {% endfor %}
@@ -64,7 +65,7 @@
         <img src="{{obj.image.url}}" alt="limited 1" height="10px" width="550px">
         <h3>{{obj.name}}</h3>
         <p class="price">₹{{obj.price}}</p>
-        <button class="add-to-cart btn">Add to Cart</button>
+        <button class="btn add-to-cart update-cart" data-product="{{ obj.pk }}" data-action="add" data-id="{{ obj.pk }}">Add to Cart</button>
       </div>
       </a>
     </div>
@@ -76,5 +77,6 @@
 
 {% block additional_js %}
 <script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock additional_js %}
 

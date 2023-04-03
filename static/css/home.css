@@ -132,7 +132,7 @@
     margin-bottom: 10px;
 }
 
-.product a.btn {
+.product button.btn {
     background-color: #318f1c;
     color: #fff;
     padding: 10px 20px;
@@ -141,7 +141,7 @@
     transition: all 0.3s;
 }
 
-.product a.btn:hover {
+.product button.btn:hover {
     background-color: #fff;
     color: #318f1c;
     border: 2px solid #318f1c;

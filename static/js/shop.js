@@ -46,34 +46,3 @@ for (var i = 0; i < btns.length; i++) {
     });
 }
 
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-
-// Add event listener to each button
-addToCartButtons.forEach(button => {
-  button.addEventListener("click", addToCart);
-});
-
-// Function to add product to cart
-function addToCart(event) {
-  const button = event.target;
-  const product = button.parentElement;
-  const productName = product.querySelector("h3").innerText;
-  const productPrice = product.querySelector(".price").innerText;
-  
-  // Create new cart item element
-  const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
-  cartItem.innerHTML = `
-    <p>${productName}</p>
-    <p>${productPrice}</p>
-  `;
-  
-  // Add cart item to cart
-  const cart = document.querySelector(".cart-items");
-  cart.appendChild(cartItem);
-  
-  // Update cart total
-  const cartTotal = document.querySelector(".cart-total");
-  const price = parseFloat(productPrice.replace("$", ""));
-  cartTotal.innerText = `$${price + parseFloat(cartTotal.innerText.replace("$", ""))}`;
-}
